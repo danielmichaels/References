@@ -12,12 +12,12 @@ SQLite transactions are ACID (Atomic, Consistent, Isolated and Durable). This me
 	- A transaction must ensure to change the database from one valid state to another. If a transaction results in invalid data, the database will revert its previous state.
 
 **Isolated**
-	- Transactions are isolated from one client to the next. When changes are made to the database the changes are only visible to that client. It does not ensure the order of transactions. 
+	- Transactions are isolated from one client to the next. When changes are made to the database the changes are only visible to that client until it is committed. If two people concurrently make changes to a database, they will be transacted sequentially. It does not ensure the order of transactions. 
 
 **Durability**
 	- If a transaction is successfully committed, the changes are permanent going forward, if it is interrupted during the commit it will revert to its previous state.
 
-SQLite3 be default is in auto-commit mode.
+SQLite3 uses auto-commit mode by default.
 
 ### Select
 
@@ -87,7 +87,7 @@ VALUES
 
 ### Update
 
-As it states, update already existing data in a table.
+Update already existing data in a table.
 
 ```SQL
 UPDATE table
@@ -191,13 +191,17 @@ To be a true primary key it must be:
 	- Unique (data, not the name),
 	- Must not be NULL or ""
 
-Tables must have primary keys, and these are stored in an index which is used to enforce the uniqueness requirement.
+Tables must have primary keys, and these are stored in an index which is used to enforce the uniqueness requirement. Being indexed, accessing it does not necessitate scanning the entire table.
 
 ### Foreign Key
 
-A **foreign key** is one or more columns in a table that refers to the primary key in another table. 
+A **foreign key** is one or more columns in a table that refers to the primary key or unique identifier in another table. 
 
 They unlike primary keys **can contain NULL, blank or duplicate values**. As they allow duplication it is best not to use a foreign key as a primary key, unless it is a one-to-one relationship.
+
+![example foreign key](https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fsql-definition.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fpic_13.png&f=1 "Library DB") 
+
+In the above picture we have a Students and Cities table. PERSON_ID and CITY_ID are unique, and therefore make good Primary keys (which they are). Inside the Students table it is possible for several students to be born in the same city. However, it is not possible for a one city to be referenced by each students PERSON_ID, as this is not unique to each city. As such the BIRTH_PLACE column is the foreign key to the Cities table. This ensures that there is relationship between the tables and that relation points to something unique in the other table.
 
 
 ### Union's
