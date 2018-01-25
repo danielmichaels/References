@@ -81,6 +81,20 @@ To do this we just change `PasswordAuthentication` to `no` inside the file. Afte
 
 Many of the automated botnets automatically search the web looking for open ports, and exploiting them by entering common default credentials. Whilst changing the ssh port from 22 to something else is security by obscurity it does enough to make elevate you above the 'low hanging fruit' category.
 
+To alter the default port the `sshd_config` needs to be edited.
+
+```BASH
+#Port 22 <---- Uncomment this and change port
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+```
+You need to be root to do this. And the ssh daemon must be restarted. `systemctl restart sshd.service` on systemd.
+
+
 **Auto Deny/Fail2Ban**
 
 **Port Knocking**
+
+A method to surreptitiously open the port to ssh. By making connection attempts ("knocking") on ports in a predefined manner the firewall allows access to ssh. Again, this is security through obscurity but coupled with several strategies does help to harden the system. Nmap can ascertain if a host has port knocking enabled. 
