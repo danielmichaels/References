@@ -1,4 +1,4 @@
-# SQL Reference
+j# SQL Reference
 ## SQLite3 Specific
 
 ### Transactions
@@ -125,7 +125,7 @@ In relation databases, data is often distributed amongst many related tables. Fo
 
 ```INNER JOIN``` clause will combine columns from correlated tables.
 
-In fig 1.1 Column A's 'f' table is compared with column B's 'f' table. If the value of the 'f' column in the A table equals that of B's 'f' column it will return the match. More simply, ```INNER JOIN``` clauses return rows from table A that have corresponding rows in the B table.
+In fig 1.1 Table A's 'f' column is compared with table B's 'f' column. If the value of the 'f' column in the A table equals that of B's 'f' column it will return the match. More simply, ```INNER JOIN``` clauses return rows from table A that have corresponding rows in the B table.
 
 ![example inner join](http://www.sqlitetutorial.net/wp-content/uploads/2015/12/SQLite-Inner-Join-Example.png "Example Inner Join")
 Fig 1.1 Inner Join
@@ -188,8 +188,8 @@ The **primary key** consists of one or more columns whose data contained within 
 *metaphor* If rows were mailboxes the primary key would be the street address.
 
 To be a true primary key it must be:
-	- Unique (data, not the name),
-	- Must not be NULL or ""
+- Unique (data, not the name),
+- Must not be NULL or ""
 
 Tables must have primary keys, and these are stored in an index which is used to enforce the uniqueness requirement. Being indexed, accessing it does not necessitate scanning the entire table.
 
@@ -201,19 +201,19 @@ They unlike primary keys **can contain NULL, blank or duplicate values**. As the
 
 ![example foreign key](https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fsql-definition.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fpic_13.png&f=1 "Library DB") 
 
-In the above picture we have a Students and Cities table. PERSON_ID and CITY_ID are unique, and therefore make good Primary keys (which they are). Inside the Students table it is possible for several students to be born in the same city. However, it is not possible for a one city to be referenced by each students PERSON_ID, as this is not unique to each city. As such the BIRTH_PLACE column is the foreign key to the Cities table. This ensures that there is relationship between the tables and that relation points to something unique in the other table.
-
+In the above picture we have a Students and Cities table. PERSON_ID and CITY_ID are unique, and therefore make good Primary keys (which they are). Inside the Students table it is possible for several students to be born in the same city. As such the BIRTH_PLACE column is the foreign key to the Cities table. This ensures that there is relationship between the tables and that relation points to something unique in the other table.
 
 ### Union's
 
 *BLUF: combines result set of two or more queries into a single result set.*
 
-```UNION``` by default removes duplicate rows whereas ```UNION ALL``` does not. as ```UNION ALL``` does not remove duplicates it will process faster. Both statements have the following rules:
-	- Must have the same number of columns,
-	- Corresponding columns must be same data type,
-	- The column names of the first query will determine the column of the combined result set,
-	- Any ```GROUP BY``` and ```HAVING``` clauses are applied to each individual query, not the final result set,
-	- The ```ORDER BY``` is applied to the combined result set, not the individual result sets.
+```UNION``` by default removes duplicate rows whereas ```UNION ALL``` does not. As ```UNION ALL``` does not remove duplicates it will process faster. Both statements have the following rules:
+
+- Must have the same number of columns,
+- Corresponding columns must be same data type,
+- The column names of the first query will determine the column of the combined result set,
+- Any ```GROUP BY``` and ```HAVING``` clauses are applied to each individual query, not the final result set,
+- The ```ORDER BY``` is applied to the combined result set, not the individual result sets.
 
 ### Transaction
 

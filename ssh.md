@@ -97,8 +97,6 @@ You need to be root to do this. And the ssh daemon must be restarted. `systemctl
 
 To access a host via ssh it needs to be open over the network. This is adds risk and creates an attack vector. *fail2ban* is a service that attempts to mitigate this by altering your firewalls configuration after a set number of unsuccessful login attempts.
 
-
-
 **Port Knocking**
 
 A method to surreptitiously open the port to ssh. By making connection attempts ("knocking") on ports in a predefined manner the firewall allows access to ssh. Again, this is security through obscurity but coupled with several strategies does help to harden the system. Nmap can ascertain if a host has port knocking enabled. 
