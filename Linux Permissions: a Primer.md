@@ -1,4 +1,4 @@
-# Linux Permissions: a Primer
+# Linux: Chmod and Chown
 
 ## **Chmod: Change File Mode Bits**
 
@@ -60,3 +60,46 @@ Using this is very simple, but how do I remove permissions? Previosuly, we would
 But if we only wanted the user to have `rwx` and everyone else read and write we could call: `chmod 755`. To use non-octal here would be `chmod go-x`. 
 
 <i> Important note:</i> As with all things linux there are many more advanced features. We are just touching the surface here.
+
+## **Chown: Change File Owner and Group**
+
+The `chown` command deals with changing the ownership of files and directories.
+
+```BASH
+drwxrwxr-x  1 test users 14.0K Jan 21 12:14 dir_1
+
+-rw-r--r--  1   admin   root   16 Feb  1 14:29 file.txt
+[filemode]     [owner] [grp]  
+````
+
+Above we have a break down of the important parts of our `ls -la` output.
+
+In the faked output we have `admin` in the first positon which is representing the owner/ creator of `file.txt`. In postition two we have the group that `file.txt` belongs to, in this case its `root`.
+
+The owner of a file can make changes to the filemode and ownsership of a file without super user priviledges. However, if another user wanted to change the ownership they would require this access.
+
+To make a change is as simple as `chown [user]:[group] [file/s]`.
+
+```BASH
+$ sudo chown root file.txt # 1.
+$ ls -l 
+-rw-r--r--  1 root root   16 Feb  1 14:29 file.txt
+```
+
+The simplest usage of `chown` is the command plus the new owner and file or directory to be affected.
+
+```BASH
+$ sudo chown -R admin dir_1 # 2.
+$ ls -l
+drwxrwxr-x  1 admin users 14.0K Jan 21 12:14 dir_1
+```
+
+If we wanted to make the changes to all files and directories inside a directory we can add `-R`. This is a recursive function with the same syntax as `chmod`.
+
+```BASH
+$ sudo chown admin:admin file.txt 
+$ ls -l
+-rw-r--r--  1 admin admin   16 Feb  1 14:29 file.txt
+```
+
+To specify a new owner and group the use of `:` between the owner and group can be used. `admin:users`, 'root:root` and so on. 
