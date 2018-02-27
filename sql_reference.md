@@ -1,4 +1,4 @@
-j# SQL Reference
+# SQL Reference
 ## SQLite3 Specific
 
 ### Transactions
