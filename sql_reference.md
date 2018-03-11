@@ -17,6 +17,10 @@ SQLite transactions are ACID (Atomic, Consistent, Isolated and Durable). This me
 **Durability**
 	- If a transaction is successfully committed, the changes are permanent going forward, if it is interrupted during the commit it will revert to its previous state.
 
+![Julia Evans ACID drawing](https://drawings.jvns.ca/drawings/acid.svg "ACID in cartoon format")
+
+**Please check out Julia Evans work at https://jvns.ca**
+
 SQLite3 uses auto-commit mode by default.
 
 ### Select

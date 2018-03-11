@@ -9,3 +9,22 @@ Stations can send two types of Probe Requests; Directed Probe Requests and Wildc
 *Whats the difference between probes and beacons?*
 
 A beacon is a management frame sent from an Access Point that details all of its important information. They are transmitted periodically to announce the presence of a WLAN. They are transmitted in a Infrastructure Basic Service Set (IBSS). IBSS beacon generation can be shared amongst stations.
+
+All of the following management frames are sent unencrypted to establish and maintain connections between the access point and client.
+
+|Type|Value|Type Description|Subtype value|Subtype Description |
+|-----|-------|------------------|----------------|---------------------|
+| 00 |Management Frame |0000 |Association Request |
+| 00 |Management Frame |0001 |Association response |
+| 00 |Management Frame |0010 |Reassociation Request |
+| 00 |Management Frame |0011 |reassociation Response |
+| 00 |Management Frame |0100 |probe Request |
+| 00 |Management Frame |0101 |probe response |
+| 00 |Management Frame |0110-0111 |reserved |
+| 00 |Management Frame |1000 |Beacon |
+| 00 |Management Frame |1001 |ATIM |
+| 00 |Management Frame |1010 |Disassociation |
+| 00 |Management Frame |1011 |Authentication |
+| 00 |Management Frame |1100 |Deauthentication |
+| 00 |Management Frame |1101 |Action |
+| 00 |Management Frame |1110-1111 |Reserved |
