@@ -79,3 +79,30 @@ class Employee:
 		self.age = age
 		self.email = name + '@example.com'
 ```
+
+### Metaclasses
+
+Abstract Classes: 
+Cannot be instantiated but its descendants can as long as the parents methods marked by the `@abstractmethod` decorator are implemented with the child. So if you want to implement an abstract class its `__metaclass__` attribute can be assigned to `ABCMeta` and its methods that are not implemented decorated with `@abstractmethod`.
+
+```python 
+from abc import ABCMeta, abstractmethod
+
+class AbstractExample:
+	__metaclass__ = ABCMeta
+
+	@abstractmethod
+	def say_hi(self):
+		pass
+```
+
+The `AbstractExample` class is the unimplemented parent which other classes can inherit from. Methods that are decorated as above should be unimplemented and thus passed. Implemented methods can be set with attributes or functional components just like a normal class.
+
+```python
+class RealExample(AbstractExample):
+
+	def say_hi(self):
+		print('hi!!!')
+```
+
+As seen above the `RealExample` inherits from the `AbstractExample` and now implements the method of `say_hi`.
