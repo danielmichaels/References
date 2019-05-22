@@ -1,8 +1,6 @@
 # **CSV**
-Some simple scripts to jog memory when CSV output is required.
 
-<br></br> 
-<br></br> 
+Some simple scripts to jog memory when CSV output is required.
 
 # Writing a CSV file
 ```python
@@ -15,7 +13,6 @@ with open('csv_file.csv', 'w') as fout:
 	writer.writerow(['Bob','Singer'])
 ```
 
-
 # Reading CSV files.
 ```python
 import csv
@@ -27,7 +24,7 @@ with open('csv_file.csv', 'r') as fin:
 		print(row)
 ```
 
-This will read all the rows within that file. 
+This will read all the rows within that file.
 
 # Reading a csv file and storing contents into python list.
 
@@ -64,10 +61,6 @@ writes(name, job)
 
 This example will now create a new file named `csv_file_updated.csv`. It will omit the headers and write only the data containing names and jobs.
 
-The above examples are for simplicity only
-
-# TODO: Dictreader and writer
-
 
 ## Operation Modes
 
@@ -95,4 +88,3 @@ The above examples are for simplicity only
 with open('example.csv','a+', newline='') as csv_file):
 
 ```
-
